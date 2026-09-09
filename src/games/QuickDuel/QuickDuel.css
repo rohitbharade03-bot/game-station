@@ -1,0 +1,1774 @@
+/* =========================================================
+   QUICK DUEL
+   Human vs AI — 30 Second Battles
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.quick-duel-page {
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(76, 29, 149, 0.28), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(8, 145, 178, 0.18), transparent 30%),
+    linear-gradient(135deg, #050816 0%, #0b1020 50%, #050816 100%);
+  color: #ffffff;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+.quick-duel-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 45px 45px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.duel-header {
+  min-height: 82px;
+  width: 100%;
+  padding: 14px 28px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+
+  background: rgba(5, 8, 22, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.duel-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.25),
+    rgba(6, 182, 212, 0.18)
+  );
+
+  border: 1px solid rgba(168, 85, 247, 0.45);
+
+  font-size: 25px;
+
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.duel-brand h1 {
+  margin: 0;
+
+  font-size: 20px;
+  line-height: 1;
+
+  font-weight: 900;
+  letter-spacing: 1.5px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #c4b5fd,
+    #67e8f9
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.duel-brand p {
+  margin: 5px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   ROUND
+   ========================================================= */
+
+.duel-header-center {
+  min-width: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.duel-header-center span {
+  color: #64748b;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.duel-header-center strong {
+  margin-top: 2px;
+
+  font-size: 23px;
+  line-height: 1;
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.duel-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.duel-header-actions select {
+  height: 40px;
+  padding: 0 13px;
+
+  border-radius: 10px;
+
+  background: rgba(15, 23, 42, 0.9);
+  color: #e2e8f0;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.duel-header-actions select:focus {
+  border-color: rgba(168, 85, 247, 0.65);
+}
+
+.sound-button {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: white;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.sound-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.duel-main {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+
+  padding: 38px 28px 80px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   BATTLE ARENA
+   ========================================================= */
+
+.battle-arena {
+  min-height: 520px;
+
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(320px, 1.2fr) minmax(240px, 1fr);
+  align-items: center;
+  gap: 30px;
+
+  position: relative;
+
+  padding: 25px;
+  border-radius: 28px;
+
+  background:
+    radial-gradient(circle at center, rgba(124, 58, 237, 0.09), transparent 45%),
+    rgba(8, 12, 28, 0.74);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 0 60px rgba(255, 255, 255, 0.015);
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   ARENA LIGHT
+   ========================================================= */
+
+.battle-arena::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.12),
+    transparent 65%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   FIGHTER
+   ========================================================= */
+
+.fighter {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  z-index: 3;
+}
+
+.fighter-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.fighter-title span {
+  color: #64748b;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 2.5px;
+}
+
+.fighter-title strong {
+  margin-top: 4px;
+
+  font-size: 22px;
+  font-weight: 950;
+
+  letter-spacing: 2px;
+}
+
+.fighter-player .fighter-title strong {
+  color: #67e8f9;
+}
+
+.fighter-ai .fighter-title strong {
+  color: #fda4af;
+}
+
+/* =========================================================
+   HP
+   ========================================================= */
+
+.hp-container {
+  width: min(230px, 100%);
+  margin-bottom: 12px;
+}
+
+.hp-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 7px;
+}
+
+.hp-label span {
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.hp-label strong {
+  font-size: 11px;
+  color: #ffffff;
+}
+
+.hp-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.hp-point {
+  height: 9px;
+
+  border-radius: 999px;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hp-point.active {
+  background: linear-gradient(
+    90deg,
+    #22d3ee,
+    #8b5cf6
+  );
+
+  box-shadow:
+    0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+.hp-point.empty {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* AI HP */
+
+.hp-container.computer .hp-point.active {
+  background: linear-gradient(
+    90deg,
+    #fb7185,
+    #f43f5e
+  );
+
+  box-shadow:
+    0 0 12px rgba(244, 63, 94, 0.5);
+}
+
+/* =========================================================
+   FIGHTER CHARACTER
+   ========================================================= */
+
+.fighter-character {
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  margin: 5px 0 15px;
+}
+
+.character-glow {
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+
+  filter: blur(30px);
+
+  opacity: 0.65;
+
+  animation: characterPulse 2.5s ease-in-out infinite;
+}
+
+.player-character .character-glow {
+  background: rgba(34, 211, 238, 0.22);
+}
+
+.ai-character .character-glow {
+  background: rgba(244, 63, 94, 0.22);
+}
+
+@keyframes characterPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.75;
+  }
+}
+
+.character-body {
+  width: 145px;
+  height: 160px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
+}
+
+.character-head {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 24px;
+
+  font-size: 42px;
+
+  position: relative;
+  z-index: 2;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+.character-torso {
+  width: 88px;
+  height: 68px;
+
+  margin-top: -3px;
+
+  border-radius: 25px 25px 17px 17px;
+
+  background: linear-gradient(
+    145deg,
+    #334155,
+    #111827
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.player-character .character-torso {
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.12),
+    0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-character .character-torso {
+  box-shadow:
+    0 0 25px rgba(244, 63, 94, 0.12),
+    0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.character-weapon {
+  position: absolute;
+
+  font-size: 32px;
+
+  right: 0;
+  bottom: 25px;
+
+  transform: rotate(-12deg);
+
+  animation: weaponFloat 1.8s ease-in-out infinite;
+}
+
+.ai-character .character-weapon {
+  transform: rotate(12deg);
+}
+
+@keyframes weaponFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(-8deg);
+  }
+}
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+.score-card {
+  min-width: 105px;
+
+  padding: 9px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.score-card span {
+  color: #64748b;
+
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.score-card strong {
+  margin-top: 3px;
+
+  font-size: 25px;
+  line-height: 1;
+}
+
+/* =========================================================
+   CENTER
+   ========================================================= */
+
+.battle-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+
+  position: relative;
+  z-index: 5;
+}
+
+.versus {
+  width: 82px;
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.2),
+      rgba(8, 12, 28, 0.85)
+    );
+
+  border: 1px solid rgba(168, 85, 247, 0.45);
+
+  box-shadow:
+    0 0 30px rgba(168, 85, 247, 0.2),
+    inset 0 0 20px rgba(168, 85, 247, 0.08);
+
+  margin-bottom: 18px;
+}
+
+.versus span {
+  font-size: 23px;
+  font-weight: 950;
+  font-style: italic;
+
+  letter-spacing: 2px;
+
+  color: #c4b5fd;
+}
+
+/* =========================================================
+   RESULT BOX
+   ========================================================= */
+
+.result-box {
+  width: min(420px, 100%);
+
+  padding: 20px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    inset 0 0 25px rgba(255, 255, 255, 0.015);
+}
+
+.result-message {
+  min-height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  margin-bottom: 18px;
+
+  font-size: 13px;
+  font-weight: 950;
+
+  letter-spacing: 1.2px;
+
+  color: #e2e8f0;
+}
+
+.result-message.player {
+  color: #67e8f9;
+  text-shadow: 0 0 15px rgba(34, 211, 238, 0.35);
+}
+
+.result-message.computer {
+  color: #fb7185;
+  text-shadow: 0 0 15px rgba(244, 63, 94, 0.35);
+}
+
+.result-message.draw {
+  color: #fbbf24;
+}
+
+/* =========================================================
+   MOVE DISPLAY
+   ========================================================= */
+
+.move-display {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.move-result {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 13px 8px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.move-result small {
+  color: #64748b;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.move-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 7px 0;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  font-size: 27px;
+}
+
+.player-move .move-icon {
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+
+.ai-move .move-icon {
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.move-result strong {
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.8px;
+}
+
+.player-move strong {
+  color: #67e8f9;
+}
+
+.ai-move strong {
+  color: #fb7185;
+}
+
+.move-vs {
+  color: #475569;
+
+  font-size: 10px;
+  font-weight: 950;
+}
+
+/* =========================================================
+   BATTLE STATUS
+   ========================================================= */
+
+.battle-status {
+  margin-top: 18px;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.status-playing {
+  color: #c4b5fd;
+}
+
+.status-won {
+  color: #67e8f9;
+
+  border-color: rgba(34, 211, 238, 0.35);
+
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.status-lost {
+  color: #fb7185;
+
+  border-color: rgba(244, 63, 94, 0.35);
+
+  background: rgba(244, 63, 94, 0.08);
+}
+
+.status-draw {
+  color: #fbbf24;
+}
+
+/* =========================================================
+   ACTION SECTION
+   ========================================================= */
+
+.action-section {
+  margin-top: 28px;
+
+  padding: 28px;
+
+  border-radius: 24px;
+
+  background: rgba(8, 12, 28, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+}
+
+.action-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.action-heading span {
+  font-size: 12px;
+
+  font-weight: 950;
+
+  letter-spacing: 2px;
+
+  color: #e2e8f0;
+}
+
+.action-heading small {
+  margin-top: 5px;
+
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.action-buttons {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(160px, 220px));
+
+  justify-content: center;
+
+  gap: 14px;
+}
+
+.duel-action {
+  min-height: 105px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.duel-action::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07),
+    transparent 55%
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.2s ease;
+}
+
+.duel-action:hover {
+  transform: translateY(-5px);
+}
+
+.duel-action:hover::before {
+  opacity: 1;
+}
+
+.duel-action:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.duel-action:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.action-icon {
+  font-size: 30px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.action-name {
+  font-size: 11px;
+
+  font-weight: 950;
+
+  letter-spacing: 1.4px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.action-key {
+  position: absolute;
+
+  top: 9px;
+  right: 10px;
+
+  width: 21px;
+  height: 21px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  z-index: 3;
+}
+
+/* Attack */
+
+.action-attack:hover {
+  border-color: rgba(248, 113, 113, 0.55);
+
+  background: rgba(239, 68, 68, 0.08);
+
+  box-shadow:
+    0 15px 35px rgba(239, 68, 68, 0.12);
+}
+
+.action-attack .action-name {
+  color: #fca5a5;
+}
+
+/* Block */
+
+.action-block:hover {
+  border-color: rgba(96, 165, 250, 0.55);
+
+  background: rgba(59, 130, 246, 0.08);
+
+  box-shadow:
+    0 15px 35px rgba(59, 130, 246, 0.12);
+}
+
+.action-block .action-name {
+  color: #93c5fd;
+}
+
+/* Special */
+
+.action-special:hover {
+  border-color: rgba(192, 132, 252, 0.6);
+
+  background: rgba(168, 85, 247, 0.09);
+
+  box-shadow:
+    0 15px 35px rgba(168, 85, 247, 0.16);
+}
+
+.action-special .action-name {
+  color: #d8b4fe;
+}
+
+/* =========================================================
+   RULES
+   ========================================================= */
+
+.duel-rules {
+  margin-top: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.rule {
+  min-width: 110px;
+
+  padding: 9px 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rule > span {
+  font-size: 16px;
+}
+
+.rule strong {
+  font-size: 9px;
+  font-weight: 950;
+}
+
+.rule small {
+  color: #64748b;
+
+  font-size: 7px;
+}
+
+.rule-arrow {
+  color: #475569;
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   GAME OVER
+   ========================================================= */
+
+.game-over-panel {
+  width: min(500px, 100%);
+
+  margin: 30px auto 0;
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  border-radius: 25px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(139, 92, 246, 0.14),
+      transparent 45%
+    ),
+    rgba(8, 12, 28, 0.9);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.game-over-icon {
+  font-size: 58px;
+
+  margin-bottom: 10px;
+
+  animation: trophyFloat 2s ease-in-out infinite;
+}
+
+@keyframes trophyFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-7px) scale(1.05);
+  }
+}
+
+.game-over-panel h2 {
+  margin: 0;
+
+  font-size: 32px;
+
+  font-weight: 950;
+
+  letter-spacing: 2px;
+}
+
+.game-over-panel p {
+  margin: 9px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FINAL SCORE
+   ========================================================= */
+
+.final-score {
+  margin: 25px auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 15px;
+
+  width: min(330px, 100%);
+}
+
+.final-score > div:not(.final-vs) {
+  padding: 15px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.final-score span {
+  display: block;
+
+  color: #64748b;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.final-score strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 27px;
+}
+
+.final-vs {
+  color: #475569;
+
+  font-size: 10px;
+
+  font-weight: 950;
+}
+
+/* =========================================================
+   PLAY AGAIN
+   ========================================================= */
+
+.play-again-button {
+  min-width: 190px;
+
+  padding: 14px 25px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #06b6d4
+  );
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 950;
+
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px rgba(124, 58, 237, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.play-again-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(124, 58, 237, 0.35);
+}
+
+.play-again-button:active {
+  transform: translateY(0);
+}
+
+.restart-hint {
+  margin-top: 12px !important;
+
+  font-size: 8px !important;
+
+  color: #475569 !important;
+
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.duel-footer {
+  min-height: 55px;
+
+  padding: 14px 28px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 2fr 1fr;
+
+  align-items: center;
+
+  gap: 15px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  background: rgba(5, 8, 22, 0.8);
+
+  color: #475569;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+.duel-footer > div:first-child {
+  text-align: left;
+
+  color: #64748b;
+}
+
+.duel-footer > div:last-child {
+  text-align: right;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .duel-header {
+    grid-template-columns: 1fr auto;
+
+    padding: 12px 18px;
+  }
+
+  .duel-header-center {
+    display: none;
+  }
+
+  .duel-header-actions {
+    justify-content: flex-end;
+  }
+
+  .duel-main {
+    padding: 25px 18px 60px;
+  }
+
+  .battle-arena {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+    padding: 25px 15px;
+  }
+
+  .battle-center {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .fighter-player {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .fighter-ai {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .fighter-character {
+    transform: scale(0.9);
+  }
+
+  .action-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .duel-header {
+    min-height: 70px;
+
+    padding: 10px 13px;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 20px;
+  }
+
+  .duel-brand h1 {
+    font-size: 16px;
+  }
+
+  .duel-brand p {
+    font-size: 8px;
+  }
+
+  .duel-header-actions select {
+    max-width: 110px;
+
+    height: 36px;
+
+    padding: 0 8px;
+
+    font-size: 9px;
+  }
+
+  .sound-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .duel-main {
+    padding: 15px 10px 45px;
+  }
+
+  .battle-arena {
+    min-height: auto;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    padding: 20px 8px;
+
+    border-radius: 20px;
+  }
+
+  .battle-center {
+    grid-column: 1 / -1;
+
+    width: 100%;
+  }
+
+  .fighter-player {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .fighter-ai {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .fighter-title {
+    margin-bottom: 7px;
+  }
+
+  .fighter-title strong {
+    font-size: 16px;
+  }
+
+  .fighter-title span {
+    font-size: 7px;
+  }
+
+  .hp-container {
+    width: 100%;
+
+    padding: 0 5px;
+  }
+
+  .hp-label span {
+    font-size: 7px;
+  }
+
+  .hp-label strong {
+    font-size: 9px;
+  }
+
+  .hp-point {
+    height: 7px;
+  }
+
+  .fighter-character {
+    width: 125px;
+    height: 145px;
+
+    transform: scale(0.75);
+
+    margin: -5px 0;
+  }
+
+  .score-card {
+    min-width: 80px;
+
+    padding: 7px 13px;
+  }
+
+  .score-card strong {
+    font-size: 20px;
+  }
+
+  .versus {
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 10px;
+  }
+
+  .versus span {
+    font-size: 17px;
+  }
+
+  .result-box {
+    padding: 13px;
+
+    border-radius: 17px;
+  }
+
+  .result-message {
+    font-size: 10px;
+
+    margin-bottom: 10px;
+  }
+
+  .move-display {
+    gap: 6px;
+  }
+
+  .move-result {
+    padding: 8px 4px;
+  }
+
+  .move-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 21px;
+  }
+
+  .move-result strong {
+    font-size: 7px;
+  }
+
+  .move-vs {
+    font-size: 8px;
+  }
+
+  .battle-status {
+    margin-top: 10px;
+
+    font-size: 8px;
+
+    padding: 6px 12px;
+  }
+
+  /* Actions */
+
+  .action-section {
+    margin-top: 15px;
+
+    padding: 20px 10px;
+
+    border-radius: 18px;
+  }
+
+  .action-heading {
+    margin-bottom: 14px;
+  }
+
+  .action-heading span {
+    font-size: 10px;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 7px;
+  }
+
+  .duel-action {
+    min-height: 90px;
+
+    border-radius: 13px;
+  }
+
+  .action-icon {
+    font-size: 24px;
+  }
+
+  .action-name {
+    font-size: 8px;
+
+    letter-spacing: 0.8px;
+  }
+
+  .action-key {
+    top: 5px;
+    right: 5px;
+
+    width: 17px;
+    height: 17px;
+
+    font-size: 7px;
+  }
+
+  /* Rules */
+
+  .duel-rules {
+    gap: 5px;
+
+    margin-top: 17px;
+  }
+
+  .rule {
+    min-width: auto;
+
+    flex: 1;
+
+    padding: 7px 5px;
+
+    gap: 3px;
+
+    flex-direction: column;
+  }
+
+  .rule > span {
+    font-size: 13px;
+  }
+
+  .rule strong {
+    font-size: 7px;
+  }
+
+  .rule small {
+    font-size: 6px;
+    text-align: center;
+  }
+
+  .rule-arrow {
+    display: none;
+  }
+
+  /* Game Over */
+
+  .game-over-panel {
+    margin-top: 15px;
+
+    padding: 28px 15px;
+
+    border-radius: 20px;
+  }
+
+  .game-over-icon {
+    font-size: 45px;
+  }
+
+  .game-over-panel h2 {
+    font-size: 25px;
+  }
+
+  .game-over-panel p {
+    font-size: 10px;
+  }
+
+  .final-score {
+    gap: 7px;
+
+    margin: 18px auto;
+  }
+
+  .final-score > div:not(.final-vs) {
+    padding: 10px;
+  }
+
+  .final-score strong {
+    font-size: 22px;
+  }
+
+  .play-again-button {
+    min-width: 170px;
+
+    padding: 12px 18px;
+
+    font-size: 9px;
+  }
+
+  /* Footer */
+
+  .duel-footer {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    padding: 15px;
+
+    font-size: 7px;
+  }
+
+  .duel-footer > div:first-child,
+  .duel-footer > div:last-child {
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .duel-brand p {
+    display: none;
+  }
+
+  .duel-header-actions select {
+    max-width: 90px;
+  }
+
+  .battle-arena {
+    padding: 15px 5px;
+  }
+
+  .fighter-character {
+    transform: scale(0.65);
+  }
+
+  .duel-action {
+    min-height: 82px;
+  }
+
+  .action-icon {
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

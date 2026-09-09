@@ -1,0 +1,188 @@
+/* =========================================================
+   ARROWVERSE — ARROW PATH
+   Neon SVG Arrow Styling
+   ========================================================= */
+
+.arrow-path {
+  pointer-events: visiblePainted;
+  cursor: pointer;
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* ---------------------------------------------------------
+   NORMAL
+--------------------------------------------------------- */
+
+.arrow-path:hover {
+  filter: brightness(1.18);
+  transform: scale(1.015);
+}
+
+/* ---------------------------------------------------------
+   CLICK / ACTIVE FEEL
+--------------------------------------------------------- */
+
+.arrow-path:active {
+  transform: scale(0.985);
+}
+
+/* ---------------------------------------------------------
+   HINT
+--------------------------------------------------------- */
+
+.arrow-path.arrow-state-hint,
+.arrow-path.arrow-state-highlight {
+  filter:
+    drop-shadow(0 0 5px #ffe600)
+    drop-shadow(0 0 12px #ffe600)
+    drop-shadow(0 0 24px rgba(255, 230, 0, 0.65));
+
+  animation: arrowHintGlow 0.9s ease-in-out infinite;
+}
+
+@keyframes arrowHintGlow {
+  0% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------
+   BLOCKED / WRONG
+--------------------------------------------------------- */
+
+.arrow-path.arrow-state-blocked,
+.arrow-path.arrow-state-error,
+.arrow-path.arrow-state-wrong {
+  filter:
+    drop-shadow(0 0 5px #ff1744)
+    drop-shadow(0 0 14px #ff1744)
+    drop-shadow(0 0 26px rgba(255, 23, 68, 0.65));
+
+  animation: blockedArrowShake 0.12s linear 4;
+}
+
+@keyframes blockedArrowShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ---------------------------------------------------------
+   MOVING
+--------------------------------------------------------- */
+
+.arrow-path.arrow-state-moving {
+  filter:
+    drop-shadow(0 0 7px currentColor)
+    drop-shadow(0 0 16px currentColor);
+
+  pointer-events: none;
+
+  animation: movingArrowGlow 0.45s ease-in-out infinite;
+}
+
+@keyframes movingArrowGlow {
+  0% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* ---------------------------------------------------------
+   REMOVED
+--------------------------------------------------------- */
+
+.arrow-path.arrow-state-removed {
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ---------------------------------------------------------
+   SVG TOUCH FEEL
+--------------------------------------------------------- */
+
+.arrow-path polyline,
+.arrow-path polygon,
+.arrow-path circle {
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .arrow-path {
+    cursor: pointer;
+  }
+
+  .arrow-path:hover {
+    transform: none;
+    filter: none;
+  }
+
+  .arrow-path:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow-path,
+  .arrow-path.arrow-state-hint,
+  .arrow-path.arrow-state-blocked,
+  .arrow-path.arrow-state-error,
+  .arrow-path.arrow-state-wrong,
+  .arrow-path.arrow-state-moving {
+    animation: none;
+    transition: none;
+  }
+}

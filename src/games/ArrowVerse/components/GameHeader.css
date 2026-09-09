@@ -1,0 +1,713 @@
+/* =========================================================
+   ARROWVERSE — GAME HEADER
+   Premium Neon Game HUD
+   ========================================================= */
+
+.av-game-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 82px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 12px 28px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 11, 25, 0.98),
+      rgba(7, 10, 21, 0.94)
+    );
+
+  border-bottom: 1px solid rgba(0, 229, 255, 0.14);
+
+  box-shadow:
+    0 8px 35px rgba(0, 0, 0, 0.42),
+    inset 0 -1px rgba(255, 255, 255, 0.035);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* =========================================================
+   HEADER GLOW LINE
+   ========================================================= */
+
+.av-game-header::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 229, 255, 0.65),
+      rgba(255, 61, 242, 0.55),
+      transparent
+    );
+
+  opacity: 0.8;
+}
+
+/* =========================================================
+   LEFT
+   ========================================================= */
+
+.av-header-left {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* =========================================================
+   HEADER BUTTON
+   ========================================================= */
+
+.av-header-button {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(150, 175, 225, 0.16);
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25, 33, 59, 0.95),
+      rgba(12, 17, 34, 0.95)
+    );
+
+  color: #f4f7ff;
+
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.055);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.av-header-button:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(0, 229, 255, 0.5);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 53, 70, 0.95),
+      rgba(12, 25, 42, 0.95)
+    );
+
+  box-shadow:
+    0 8px 25px rgba(0, 229, 255, 0.14),
+    0 0 15px rgba(0, 229, 255, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.av-header-button:active {
+  transform: scale(0.93);
+}
+
+.av-header-button:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.av-back-button {
+  color: #00e5ff;
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.av-game-brand {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+/* =========================================================
+   BRAND ICON
+   ========================================================= */
+
+.av-brand-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 14px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(255, 255, 255, 0.14),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(0, 229, 255, 0.18),
+      rgba(126, 87, 255, 0.18)
+    );
+
+  color: #00e5ff;
+
+  font-size: 24px;
+
+  box-shadow:
+    0 0 20px rgba(0, 229, 255, 0.12),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   BRAND TITLE
+   ========================================================= */
+
+.av-brand-title {
+  color: #ffffff;
+
+  font-size: 18px;
+  line-height: 1;
+
+  font-weight: 950;
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   BRAND SUBTITLE
+   ========================================================= */
+
+.av-brand-subtitle {
+  margin-top: 6px;
+
+  color: #64728f;
+
+  font-size: 9px;
+  line-height: 1;
+
+  font-weight: 900;
+  letter-spacing: 2.8px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CENTER
+   ========================================================= */
+
+.av-header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 25px;
+}
+
+/* =========================================================
+   LEVEL BADGE
+   ========================================================= */
+
+.av-level-badge {
+  min-width: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: 1px solid rgba(255, 230, 0, 0.28);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(46, 42, 17, 0.9),
+      rgba(24, 25, 20, 0.92)
+    );
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.28),
+    0 0 20px rgba(255, 230, 0, 0.05),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.av-level-label {
+  color: #a79f63;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.av-level-badge strong {
+  color: #ffe600;
+
+  font-size: 22px;
+  line-height: 1;
+
+  font-weight: 950;
+
+  text-shadow:
+    0 0 12px rgba(255, 230, 0, 0.35);
+}
+
+/* =========================================================
+   RIGHT
+   ========================================================= */
+
+.av-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+/* =========================================================
+   HEADER STAT
+   ========================================================= */
+
+.av-header-stat {
+  min-width: 105px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 12px;
+
+  border: 1px solid rgba(120, 145, 200, 0.14);
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(23, 30, 53, 0.88),
+      rgba(12, 17, 32, 0.9)
+    );
+
+  box-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================
+   STAT ICON
+   ========================================================= */
+
+.av-stat-icon {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   STAT TEXT
+   ========================================================= */
+
+.av-header-stat small {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #66728c;
+
+  font-size: 8px;
+  line-height: 1;
+
+  font-weight: 900;
+  letter-spacing: 1.4px;
+}
+
+.av-header-stat strong {
+  display: block;
+
+  color: #f5f8ff;
+
+  font-size: 14px;
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+.av-header-stat:first-child strong {
+  color: #00e5ff;
+}
+
+/* =========================================================
+   COINS
+   ========================================================= */
+
+.av-coin-stat {
+  border-color: rgba(255, 230, 0, 0.12);
+}
+
+.av-coin-stat strong {
+  color: #ffe600;
+}
+
+/* =========================================================
+   LIVES
+   ========================================================= */
+
+.av-header-lives {
+  min-height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 0 9px;
+
+  border: 1px solid rgba(255, 23, 68, 0.13);
+  border-radius: 13px;
+
+  background:
+    rgba(45, 13, 25, 0.45);
+}
+
+/* =========================================================
+   HEART
+   ========================================================= */
+
+.av-header-heart {
+  display: inline-block;
+
+  font-size: 19px;
+  line-height: 1;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+
+.av-header-heart.active {
+  color: #ff1744;
+
+  text-shadow:
+    0 0 8px rgba(255, 23, 68, 0.65),
+    0 0 18px rgba(255, 23, 68, 0.3);
+
+  animation: activeHeartPulse 1.8s ease-in-out infinite;
+}
+
+.av-header-heart.lost {
+  color: #3a2630;
+
+  opacity: 0.55;
+
+  filter: grayscale(1);
+}
+
+@keyframes activeHeartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================================================
+   SOUND BUTTON
+   ========================================================= */
+
+.av-header-right > .av-header-button {
+  font-size: 18px;
+}
+
+/* =========================================================
+   RESTART BUTTON
+   ========================================================= */
+
+.av-header-right > .av-header-button:last-child {
+  color: #a970ff;
+
+  font-size: 26px;
+}
+
+.av-header-right > .av-header-button:last-child:hover {
+  border-color: rgba(169, 112, 255, 0.55);
+
+  box-shadow:
+    0 8px 25px rgba(169, 112, 255, 0.15),
+    0 0 16px rgba(169, 112, 255, 0.08);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1150px) {
+  .av-game-header {
+    grid-template-columns: auto 1fr auto;
+    padding: 10px 18px;
+  }
+
+  .av-header-center {
+    padding: 0 15px;
+  }
+
+  .av-header-stat {
+    min-width: auto;
+    padding: 8px 9px;
+  }
+
+  .av-header-stat > div {
+    display: none;
+  }
+
+  .av-stat-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .av-game-header {
+    min-height: 70px;
+  }
+
+  .av-brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .av-brand-title {
+    font-size: 15px;
+  }
+
+  .av-brand-subtitle {
+    font-size: 7px;
+  }
+
+  .av-header-button {
+    width: 39px;
+    height: 39px;
+  }
+
+  .av-level-badge {
+    min-width: 78px;
+    padding: 8px 12px;
+  }
+
+  .av-level-badge strong {
+    font-size: 19px;
+  }
+
+  .av-header-lives {
+    min-height: 39px;
+  }
+
+  .av-header-heart {
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .av-game-header {
+    grid-template-columns: 1fr auto;
+
+    min-height: 64px;
+
+    padding: 8px 10px;
+  }
+
+  .av-header-center {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 0;
+
+    pointer-events: none;
+  }
+
+  .av-header-right {
+    gap: 5px;
+  }
+
+  .av-header-stat {
+    display: none;
+  }
+
+  .av-header-lives {
+    padding: 0 6px;
+  }
+
+  .av-header-button {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+  }
+
+  .av-game-brand {
+    gap: 8px;
+  }
+
+  .av-brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+
+  .av-brand-title {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
+  .av-brand-subtitle {
+    margin-top: 4px;
+    font-size: 6px;
+    letter-spacing: 2px;
+  }
+
+  .av-level-badge {
+    min-width: 67px;
+
+    gap: 5px;
+
+    padding: 7px 10px;
+
+    border-radius: 11px;
+  }
+
+  .av-level-label {
+    font-size: 7px;
+  }
+
+  .av-level-badge strong {
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .av-game-header {
+    padding: 7px;
+  }
+
+  .av-brand-icon {
+    display: none;
+  }
+
+  .av-brand-title {
+    font-size: 12px;
+  }
+
+  .av-brand-subtitle {
+    font-size: 5px;
+  }
+
+  .av-header-lives {
+    gap: 2px;
+  }
+
+  .av-header-heart {
+    font-size: 15px;
+  }
+
+  .av-header-button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .av-header-right > .av-header-button:last-child {
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .av-header-button,
+  .av-header-heart,
+  .av-game-brand,
+  .av-level-badge {
+    transition: none;
+    animation: none;
+  }
+}

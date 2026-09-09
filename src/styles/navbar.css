@@ -1,0 +1,164 @@
+.navbar {
+  height: 72px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 0 28px;
+  background: #080d18;
+  border-bottom: 1px solid #1c2535;
+  box-sizing: border-box;
+}
+
+/* Logo */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+}
+
+.logo-icon {
+  font-size: 34px;
+}
+
+.navbar-logo h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 17px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.navbar-logo h2:last-child {
+  color: #ffc400;
+}
+
+/* Search */
+
+.search-box {
+  flex: 1;
+  max-width: 520px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: #111827;
+  border: 1px solid #263247;
+  border-radius: 12px;
+  color: #8d99ad;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #788499;
+}
+
+/* Right Section */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.balance {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid #263247;
+  border-radius: 22px;
+  background: #101827;
+  color: white;
+  font-weight: 600;
+}
+
+.balance button {
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 50%;
+  background: #6d3df5;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.icon-button {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background: #151f31;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff334f;
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .navbar-logo {
+    min-width: auto;
+  }
+
+  .navbar-logo div {
+    display: none;
+  }
+
+  .search-box {
+    max-width: none;
+  }
+
+  .balance {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .navbar {
+    gap: 10px;
+  }
+
+  .search-box {
+    height: 40px;
+  }
+
+  .icon-button:last-child {
+    display: none;
+  }
+}

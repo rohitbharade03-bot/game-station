@@ -1,0 +1,350 @@
+/* =========================================================
+   ARROWVERSE — HINT PANEL
+   ========================================================= */
+
+.av-hint-panel {
+  width: 100%;
+  padding: 20px;
+
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(0, 229, 255, 0.10),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(18, 27, 48, 0.94),
+      rgba(10, 15, 29, 0.96)
+    );
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+
+  color: #fff;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.av-hint-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 16px;
+}
+
+.av-hint-title {
+  color: #f7faff;
+
+  font-size: 18px;
+  font-weight: 950;
+
+  letter-spacing: 0.8px;
+}
+
+.av-hint-subtitle {
+  margin-top: 4px;
+
+  color: #75829e;
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.av-hint-count {
+  min-width: 48px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 10px;
+
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-radius: 999px;
+
+  background: rgba(0, 229, 255, 0.07);
+
+  color: #00e5ff;
+
+  font-size: 12px;
+  font-weight: 950;
+
+  box-shadow:
+    0 0 18px rgba(0, 229, 255, 0.06);
+}
+
+/* =========================================================
+   HINT ACTION
+   ========================================================= */
+
+.av-hint-action {
+  width: 100%;
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 13px;
+
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 229, 255, 0.09),
+      rgba(82, 70, 255, 0.08)
+    );
+
+  color: #fff;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.av-hint-action:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  border-color: rgba(0, 229, 255, 0.38);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0, 229, 255, 0.14),
+      rgba(82, 70, 255, 0.12)
+    );
+
+  box-shadow:
+    0 10px 28px rgba(0, 229, 255, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.av-hint-action:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* =========================================================
+   BULB
+   ========================================================= */
+
+.av-hint-bulb {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: rgba(255, 230, 0, 0.09);
+
+  border: 1px solid rgba(255, 230, 0, 0.16);
+
+  font-size: 20px;
+
+  box-shadow:
+    0 0 18px rgba(255, 230, 0, 0.06);
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.av-hint-content {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.av-hint-content strong {
+  display: block;
+
+  color: #f7faff;
+
+  font-size: 12px;
+
+  font-weight: 950;
+
+  letter-spacing: 0.6px;
+}
+
+.av-hint-content small {
+  display: block;
+
+  color: #8d9ab5;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.av-hint-arrow {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #00e5ff;
+
+  font-size: 18px;
+  font-weight: 900;
+
+  transition: transform 0.18s ease;
+}
+
+.av-hint-action:hover:not(:disabled) .av-hint-arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.av-hint-action.av-hint-disabled,
+.av-hint-action:disabled {
+  opacity: 0.42;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+.av-hint-action:disabled .av-hint-arrow {
+  color: #69758e;
+}
+
+/* =========================================================
+   COIN WARNING
+   ========================================================= */
+
+.av-hint-warning {
+  margin-top: 11px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(255, 174, 0, 0.16);
+  border-radius: 11px;
+
+  background: rgba(255, 174, 0, 0.06);
+
+  color: #ffcb52;
+
+  font-size: 10px;
+  font-weight: 750;
+
+  text-align: center;
+}
+
+/* =========================================================
+   ALL HINTS USED
+   ========================================================= */
+
+.av-hint-complete {
+  margin-top: 11px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(57, 255, 20, 0.14);
+  border-radius: 11px;
+
+  background: rgba(57, 255, 20, 0.055);
+
+  color: #8cff76;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-align: center;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.av-hint-action:focus-visible,
+.av-hint-panel button:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .av-hint-panel {
+    padding: 17px;
+    border-radius: 18px;
+  }
+
+  .av-hint-title {
+    font-size: 16px;
+  }
+
+  .av-hint-action {
+    min-height: 62px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .av-hint-panel {
+    padding: 15px;
+  }
+
+  .av-hint-bulb {
+    width: 36px;
+    height: 36px;
+
+    font-size: 18px;
+  }
+
+  .av-hint-content strong {
+    font-size: 11px;
+  }
+}

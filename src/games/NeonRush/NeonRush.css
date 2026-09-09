@@ -1,0 +1,2328 @@
+/* =========================================================
+   NEON RUSH — GAME 08
+   Complete CSS
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.neon-rush {
+  --bg: #050712;
+  --panel: rgba(8, 13, 28, 0.86);
+  --panel2: rgba(12, 18, 38, 0.94);
+
+  --cyan: #52f6ff;
+  --pink: #ff3e91;
+  --yellow: #ffd84a;
+  --green: #55f0a5;
+  --purple: #9a70ff;
+
+  --white: #ffffff;
+  --muted: #8d96b1;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 18px;
+
+  color: var(--white);
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(82, 246, 255, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 0% 60%,
+      rgba(154, 112, 255, 0.1),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 60%,
+      rgba(255, 62, 145, 0.09),
+      transparent 30%
+    ),
+    var(--bg);
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.nr-header {
+  width: min(1400px, 100%);
+  min-height: 70px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+  padding: 12px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+
+  background: rgba(6, 10, 23, 0.84);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* BRAND */
+
+.nr-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.nr-brandIcon {
+  width: 46px;
+  height: 46px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  color: #041016;
+
+  font-size: 23px;
+  font-weight: 1000;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cyan),
+      var(--purple)
+    );
+
+  box-shadow:
+    0 0 25px rgba(82, 246, 255, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.55);
+}
+
+.nr-brand strong {
+  display: block;
+
+  font-size: 18px;
+  line-height: 1;
+
+  letter-spacing: 2px;
+  font-weight: 1000;
+}
+
+.nr-brand small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--cyan);
+
+  font-size: 8px;
+  letter-spacing: 4px;
+  font-weight: 900;
+}
+
+/* HEADER STATS */
+
+.nr-headerStats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nr-headerStats > div {
+  min-width: 82px;
+
+  padding: 8px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.nr-headerStats span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 7px;
+  letter-spacing: 1.6px;
+  font-weight: 900;
+}
+
+.nr-headerStats strong {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* BUTTONS */
+
+.nr-sound,
+.nr-pause {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.nr-sound:hover,
+.nr-pause:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(82, 246, 255, 0.55);
+
+  background: rgba(82, 246, 255, 0.08);
+}
+
+/* =========================================================
+   MAIN SHELL
+   ========================================================= */
+
+.nr-gameShell {
+  width: min(1400px, 100%);
+  margin: auto;
+}
+
+/* =========================================================
+   TOP HUD
+   ========================================================= */
+
+.nr-hud {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(110px, 0.7fr))
+    minmax(230px, 1.6fr);
+
+  gap: 9px;
+
+  margin-bottom: 10px;
+}
+
+.nr-statCard,
+.nr-riskCard {
+  min-height: 66px;
+
+  padding: 11px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+
+  background: var(--panel);
+
+  backdrop-filter: blur(14px);
+}
+
+.nr-statCard span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 7px;
+  letter-spacing: 1.7px;
+  font-weight: 900;
+}
+
+.nr-statCard strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 18px;
+  line-height: 1;
+
+  font-weight: 1000;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.coinStat strong {
+  color: var(--yellow);
+
+  text-shadow:
+    0 0 14px rgba(255, 216, 74, 0.35);
+}
+
+/* PROGRESS */
+
+.nr-riskHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nr-riskHeader span {
+  color: var(--muted);
+
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  font-weight: 900;
+}
+
+.nr-riskHeader strong {
+  color: var(--green);
+
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.nr-riskBar {
+  height: 8px;
+
+  margin-top: 11px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.nr-riskBar span {
+  display: block;
+
+  height: 100%;
+
+  min-width: 2px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      var(--yellow),
+      var(--pink)
+    );
+
+  box-shadow:
+    0 0 14px rgba(255, 62, 145, 0.45);
+
+  transition: width 0.2s linear;
+}
+
+/* =========================================================
+   GAME WORLD
+   ========================================================= */
+
+.nr-world {
+  position: relative;
+
+  width: 100%;
+  height: min(700px, calc(100vh - 255px));
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(82, 246, 255, 0.15);
+  border-radius: 25px;
+
+  background: #03050d;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.45),
+    inset 0 0 100px rgba(82, 246, 255, 0.035);
+}
+
+/* =========================================================
+   SKY
+   ========================================================= */
+
+.nr-sky {
+  position: absolute;
+
+  inset: 0 0 30% 0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(82, 246, 255, 0.17),
+      transparent 23%
+    ),
+    linear-gradient(
+      180deg,
+      #080d23 0%,
+      #08091b 55%,
+      #130a20 100%
+    );
+}
+
+/* STARS */
+
+.nr-sky::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(82, 246, 255, 0.8) 0 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+    74px 74px,
+    123px 123px;
+
+  background-position:
+    15px 20px,
+    45px 60px;
+
+  opacity: 0.25;
+
+  animation: nrStars 12s linear infinite;
+}
+
+/* MOON */
+
+.nr-moon {
+  position: absolute;
+
+  top: 11%;
+  left: 50%;
+
+  width: 82px;
+  height: 82px;
+
+  display: grid;
+  place-items: center;
+
+  transform: translateX(-50%);
+
+  color: rgba(82, 246, 255, 0.9);
+
+  font-size: 78px;
+  line-height: 1;
+
+  text-shadow:
+    0 0 20px rgba(82, 246, 255, 0.65),
+    0 0 70px rgba(82, 246, 255, 0.2);
+
+  opacity: 0.72;
+}
+
+/* CITY */
+
+.nr-city {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  font-weight: 1000;
+  letter-spacing: 12px;
+}
+
+.cityBack {
+  bottom: 5%;
+
+  color: rgba(82, 246, 255, 0.11);
+
+  font-size: 76px;
+}
+
+.cityFront {
+  bottom: -5%;
+
+  color: rgba(255, 62, 145, 0.1);
+
+  font-size: 105px;
+}
+
+/* =========================================================
+   NEON GRID
+   ========================================================= */
+
+.nr-gridGlow {
+  position: absolute;
+
+  left: 50%;
+  bottom: -100px;
+
+  width: 115%;
+  height: 260px;
+
+  transform:
+    translateX(-50%)
+    perspective(450px)
+    rotateX(55deg);
+
+  transform-origin: center bottom;
+
+  background:
+    linear-gradient(
+      rgba(82, 246, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(82, 246, 255, 0.1) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    50px 35px;
+
+  opacity: 0.5;
+}
+
+/* =========================================================
+   TRACK
+   ========================================================= */
+
+.nr-track {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: min(760px, 88%);
+  height: 83%;
+
+  transform: translateX(-50%);
+
+  overflow: hidden;
+
+  clip-path: polygon(
+    35% 0%,
+    65% 0%,
+    100% 100%,
+    0% 100%
+  );
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(9, 13, 29, 0.96),
+      rgba(20, 24, 49, 0.98),
+      rgba(9, 13, 29, 0.96)
+    );
+
+  box-shadow:
+    0 0 90px rgba(82, 246, 255, 0.06);
+}
+
+/* ROAD LINES */
+
+.nr-track::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0 2px,
+      transparent 2px 45px
+    );
+
+  animation:
+    nrRoadMove 0.8s linear infinite;
+}
+
+/* ROAD GLOW */
+
+.nr-track::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(82, 246, 255, 0.12),
+      transparent 18%,
+      transparent 82%,
+      rgba(255, 62, 145, 0.12)
+    );
+
+  pointer-events: none;
+}
+
+/* LANES */
+
+.nr-lane {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  border-left:
+    1px dashed rgba(82, 246, 255, 0.2);
+}
+
+.laneLeft {
+  left: 33.33%;
+}
+
+.laneMiddle {
+  left: 66.66%;
+}
+
+/* ROAD LIGHT */
+
+.nr-trackGlow {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 30%;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      rgba(82, 246, 255, 0.16),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   OBJECTS
+   ========================================================= */
+
+.nr-object {
+  position: absolute;
+
+  z-index: 8;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  will-change: top, transform;
+}
+
+/* COIN */
+
+.nr-coin {
+  width: 35px;
+  height: 35px;
+
+  color: var(--yellow);
+
+  font-size: 28px;
+
+  filter:
+    drop-shadow(
+      0 0 7px rgba(255, 216, 74, 0.95)
+    )
+    drop-shadow(
+      0 0 20px rgba(255, 216, 74, 0.5)
+    );
+
+  animation:
+    nrCoinSpin 0.7s linear infinite,
+    nrCoinFloat 0.7s ease-in-out infinite alternate;
+}
+
+.nr-coin::after {
+  content: "";
+
+  position: absolute;
+
+  width: 39px;
+  height: 39px;
+
+  border:
+    2px solid rgba(255, 216, 74, 0.3);
+
+  border-radius: 50%;
+
+  animation:
+    nrCoinPulse 0.8s ease-in-out infinite;
+}
+
+/* =========================================================
+   OBSTACLES
+   ========================================================= */
+
+.nr-obstacle {
+  width: 75px;
+  height: 53px;
+
+  border:
+    2px solid rgba(255, 62, 145, 0.65);
+
+  border-radius: 10px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 62, 145, 0.9),
+      rgba(103, 30, 100, 0.9)
+    );
+
+  box-shadow:
+    0 0 20px rgba(255, 62, 145, 0.3),
+    inset 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.nr-obstacle span {
+  font-size: 21px;
+  font-weight: 1000;
+}
+
+.nr-obstacle small,
+.nr-powerup small {
+  position: absolute;
+
+  left: 50%;
+  bottom: -16px;
+
+  transform: translateX(-50%);
+
+  white-space: nowrap;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 6px;
+
+  letter-spacing: 1.3px;
+
+  font-weight: 900;
+}
+
+/* LASER */
+
+.obstacle-laser {
+  width: 92px;
+  height: 13px;
+
+  border:
+    1px solid rgba(255, 62, 145, 0.95);
+
+  border-radius: 99px;
+
+  background: var(--pink);
+
+  box-shadow:
+    0 0 9px var(--pink),
+    0 0 30px rgba(255, 62, 145, 0.75);
+
+  animation:
+    nrLaserPulse 0.35s infinite alternate;
+}
+
+/* WALL */
+
+.obstacle-wall {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(154, 112, 255, 0.92),
+      rgba(55, 35, 110, 0.96)
+    );
+
+  border-color:
+    rgba(154, 112, 255, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(154, 112, 255, 0.25);
+}
+
+/* DRONE */
+
+.obstacle-drone {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  border-color:
+    rgba(82, 246, 255, 0.8);
+
+  background:
+    radial-gradient(
+      circle,
+      var(--cyan) 0 12%,
+      #102d38 13% 50%,
+      #07131d 51%
+    );
+
+  box-shadow:
+    0 0 18px rgba(82, 246, 255, 0.6);
+
+  animation:
+    nrDrone 0.55s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   POWERUPS
+   ========================================================= */
+
+.nr-powerup {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 15px;
+
+  color: white;
+
+  background:
+    rgba(8, 13, 27, 0.96);
+
+  border:
+    2px solid var(--cyan);
+
+  box-shadow:
+    0 0 20px rgba(82, 246, 255, 0.35),
+    inset 0 0 18px rgba(82, 246, 255, 0.08);
+
+  animation:
+    nrPowerFloat 0.8s ease-in-out infinite alternate;
+}
+
+.nr-powerup > span {
+  font-size: 23px;
+
+  text-shadow:
+    0 0 12px currentColor;
+}
+
+.power-shield {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.power-magnet {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.power-energy {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.power-slow {
+  color: var(--purple);
+  border-color: var(--purple);
+}
+
+/* =========================================================
+   PLAYER
+   ========================================================= */
+
+.nr-player {
+  position: absolute;
+
+  z-index: 15;
+
+  bottom: 11%;
+
+  width: 58px;
+  height: 96px;
+
+  transform:
+    translateX(-50%)
+    translateY(
+      calc(var(--player-jump) * -45px)
+    );
+
+  transition:
+    left 0.16s cubic-bezier(0.2, 0.8, 0.25, 1),
+    transform 0.16s cubic-bezier(0.2, 0.8, 0.25, 1);
+
+  filter:
+    drop-shadow(
+      0 10px 10px rgba(0, 0, 0, 0.35)
+    )
+    drop-shadow(
+      0 0 13px rgba(82, 246, 255, 0.22)
+    );
+
+  will-change: left, transform;
+}
+
+/* PLAYER GLOW */
+
+.nr-playerGlow {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 67px;
+  height: 15px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(82, 246, 255, 0.4);
+
+  filter: blur(9px);
+}
+
+/* HEAD */
+
+.nr-playerHead {
+  position: absolute;
+
+  left: 50%;
+  top: 3px;
+
+  width: 30px;
+  height: 30px;
+
+  transform: translateX(-50%);
+
+  border:
+    2px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      white,
+      #8defff 23%,
+      #2d4271 60%,
+      #090d19 100%
+    );
+
+  box-shadow:
+    0 0 14px rgba(82, 246, 255, 0.5);
+}
+
+/* VISOR */
+
+.nr-playerHead::after {
+  content: "";
+
+  position: absolute;
+
+  left: 4px;
+  right: 4px;
+  bottom: 7px;
+
+  height: 4px;
+
+  border-radius: 99px;
+
+  background: var(--pink);
+
+  box-shadow:
+    0 0 9px var(--pink);
+}
+
+/* BODY */
+
+.nr-playerBody {
+  position: absolute;
+
+  left: 50%;
+  top: 31px;
+
+  width: 29px;
+  height: 40px;
+
+  transform: translateX(-50%);
+
+  border:
+    2px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 11px 11px 8px 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cyan),
+      #3151a3 50%,
+      var(--purple)
+    );
+
+  box-shadow:
+    inset 0 0 12px rgba(255, 255, 255, 0.17),
+    0 0 14px rgba(82, 246, 255, 0.22);
+}
+
+.nr-playerBody span {
+  position: absolute;
+
+  left: 50%;
+  top: 11px;
+
+  width: 12px;
+  height: 4px;
+
+  transform: translateX(-50%);
+
+  border-radius: 99px;
+
+  background: white;
+
+  opacity: 0.8;
+}
+
+/* LEGS */
+
+.nr-playerLeg {
+  position: absolute;
+
+  top: 69px;
+
+  width: 8px;
+  height: 26px;
+
+  border-radius: 99px;
+
+  background: #252d50;
+
+  transform-origin: top;
+
+  animation:
+    nrRunLeg 0.22s ease-in-out infinite alternate;
+}
+
+.nr-playerLeg.left {
+  left: 18px;
+  transform: rotate(12deg);
+}
+
+.nr-playerLeg.right {
+  right: 18px;
+
+  transform: rotate(-12deg);
+
+  animation-delay: 0.11s;
+}
+
+.nr-player.isJumping .nr-playerLeg {
+  animation: none;
+  transform: rotate(22deg);
+}
+
+.nr-player.isJumping .nr-playerGlow {
+  opacity: 0.5;
+
+  transform:
+    translateX(-50%)
+    scale(0.7);
+}
+
+/* =========================================================
+   ACTIVE POWER
+   ========================================================= */
+
+.nr-activePower {
+  position: absolute;
+
+  top: 17px;
+  right: 17px;
+
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 9px 13px;
+
+  border:
+    1px solid rgba(82, 246, 255, 0.3);
+
+  border-radius: 12px;
+
+  background:
+    rgba(5, 8, 18, 0.75);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 22px rgba(82, 246, 255, 0.1);
+}
+
+.nr-activePower span {
+  color: var(--cyan);
+
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.nr-activePower strong {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.nr-message {
+  position: absolute;
+
+  z-index: 50;
+
+  top: 27%;
+  left: 50%;
+
+  width: max-content;
+  max-width: 90%;
+
+  transform: translateX(-50%);
+
+  padding: 9px 18px;
+
+  color: white;
+
+  font-size: clamp(18px, 3vw, 31px);
+
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 10px rgba(82, 246, 255, 0.95),
+    0 0 30px rgba(255, 62, 145, 0.5);
+
+  animation:
+    nrMessage 0.9s ease both;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ROAD TEXT
+   ========================================================= */
+
+.nr-roadText {
+  position: absolute;
+
+  left: 24px;
+  bottom: 19px;
+
+  z-index: 16;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  pointer-events: none;
+}
+
+.nr-roadText span {
+  color: rgba(82, 246, 255, 0.45);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  font-weight: 900;
+}
+
+.nr-roadText strong {
+  color: rgba(255, 255, 255, 0.2);
+
+  font-size: 15px;
+
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   START / PAUSE / GAME OVER
+   ========================================================= */
+
+.nr-startOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+
+  background:
+    rgba(2, 4, 11, 0.65);
+
+  backdrop-filter: blur(7px);
+}
+
+.nr-startCard,
+.nr-resultCard {
+  width: min(480px, 94%);
+
+  padding: 31px;
+
+  border:
+    1px solid rgba(82, 246, 255, 0.22);
+
+  border-radius: 25px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14, 20, 42, 0.97),
+      rgba(6, 9, 21, 0.97)
+    );
+
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.55),
+    0 0 70px rgba(82, 246, 255, 0.06);
+
+  animation:
+    nrCardIn 0.35s ease both;
+}
+
+/* START ICON */
+
+.nr-startIcon {
+  width: 62px;
+  height: 62px;
+
+  margin: 0 auto 15px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid rgba(82, 246, 255, 0.35);
+
+  border-radius: 20px;
+
+  color: var(--cyan);
+
+  background:
+    rgba(82, 246, 255, 0.07);
+
+  font-size: 30px;
+
+  box-shadow:
+    0 0 30px rgba(82, 246, 255, 0.12);
+}
+
+.nr-startCard > span,
+.nr-resultCard > span {
+  color: var(--cyan);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  font-weight: 1000;
+}
+
+/* TITLE */
+
+.nr-startCard h1 {
+  margin: 12px 0 8px;
+
+  font-size: clamp(36px, 6vw, 55px);
+
+  line-height: 0.92;
+
+  letter-spacing: -2px;
+
+  font-weight: 1000;
+}
+
+.nr-startCard h1 b {
+  display: block;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cyan),
+      white,
+      var(--pink)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* DESCRIPTION */
+
+.nr-startCard p {
+  margin: 16px 0 23px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MAIN BUTTON
+   ========================================================= */
+
+.nr-mainButton,
+.nr-secondaryButton {
+  min-height: 50px;
+
+  padding: 0 20px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-weight: 1000;
+
+  letter-spacing: 1.1px;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.nr-mainButton {
+  width: 100%;
+
+  border:
+    1px solid rgba(82, 246, 255, 0.6);
+
+  color: #031015;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cyan),
+      #b8ffff
+    );
+
+  box-shadow:
+    0 10px 30px rgba(82, 246, 255, 0.16);
+}
+
+.nr-mainButton span {
+  margin-left: 10px;
+
+  font-size: 18px;
+}
+
+.nr-mainButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 35px rgba(82, 246, 255, 0.3);
+}
+
+.nr-secondaryButton {
+  width: 100%;
+
+  color: white;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    rgba(255, 255, 255, 0.05);
+}
+
+.nr-secondaryButton:hover {
+  background:
+    rgba(255, 255, 255, 0.09);
+}
+
+/* START HELP */
+
+.nr-startHelp {
+  display: flex;
+  justify-content: center;
+
+  gap: 24px;
+
+  margin-top: 21px;
+}
+
+.nr-startHelp span {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.nr-startHelp small {
+  color: var(--muted);
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   RESULT
+   ========================================================= */
+
+.nr-resultCard h1 {
+  margin: 11px 0 0;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cyan),
+      white,
+      var(--pink)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  font-size: 30px;
+
+  font-weight: 1000;
+}
+
+.nr-resultScore {
+  margin: 11px 0 20px;
+
+  font-size: clamp(45px, 8vw, 70px);
+
+  line-height: 1;
+
+  font-weight: 1000;
+
+  letter-spacing: -3px;
+
+  text-shadow:
+    0 0 25px rgba(82, 246, 255, 0.35);
+}
+
+.nr-resultStats {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.nr-resultStats > div {
+  padding: 12px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+.nr-resultStats span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+  letter-spacing: 1.3px;
+
+  font-weight: 900;
+}
+
+.nr-resultStats strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 15px;
+}
+
+.nr-newBest {
+  margin: 13px 0;
+
+  color: var(--yellow);
+
+  font-size: 11px;
+
+  font-weight: 1000;
+
+  letter-spacing: 2px;
+
+  animation:
+    nrBestPulse 0.8s ease-in-out infinite alternate;
+}
+
+.nr-resultButtons {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 8px;
+}
+
+/* =========================================================
+   BOTTOM HUD
+   ========================================================= */
+
+.nr-bottomHud {
+  display: grid;
+
+  grid-template-columns:
+    150px
+    1fr
+    220px;
+
+  gap: 9px;
+
+  margin-top: 10px;
+}
+
+.nr-combo,
+.nr-tip {
+  min-height: 75px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 15px;
+
+  background:
+    var(--panel);
+}
+
+.nr-combo > span,
+.nr-tip > span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+
+  font-weight: 900;
+}
+
+.nr-combo strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--yellow);
+
+  font-size: 25px;
+
+  line-height: 1;
+}
+
+.nr-combo small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--cyan);
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+.nr-tip p {
+  margin: 7px 0 0;
+
+  color: #a8b0c7;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.nr-controls {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 8px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 15px;
+
+  background:
+    var(--panel);
+}
+
+.nr-controls button {
+  width: 64px;
+  height: 58px;
+
+  border:
+    1px solid rgba(82, 246, 255, 0.18);
+
+  border-radius: 15px;
+
+  color: white;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  font-size: 26px;
+
+  font-weight: 1000;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  touch-action: manipulation;
+
+  transition:
+    transform 0.1s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.nr-controls button:hover {
+  border-color:
+    rgba(82, 246, 255, 0.55);
+
+  background:
+    rgba(82, 246, 255, 0.09);
+}
+
+.nr-controls button:active {
+  transform: scale(0.92);
+
+  background:
+    rgba(82, 246, 255, 0.2);
+}
+
+.nr-controls .jumpButton {
+  color: var(--cyan);
+
+  border-color:
+    rgba(82, 246, 255, 0.45);
+}
+
+/* =========================================================
+   POWER EFFECTS
+   ========================================================= */
+
+.nr-world.power-shield .nr-player {
+  filter:
+    drop-shadow(
+      0 0 10px rgba(82, 246, 255, 0.95)
+    )
+    drop-shadow(
+      0 0 28px rgba(82, 246, 255, 0.7)
+    );
+}
+
+.nr-world.power-shield .nr-player::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -16px;
+
+  border:
+    2px solid rgba(82, 246, 255, 0.65);
+
+  border-radius: 50%;
+
+  box-shadow:
+    inset 0 0 18px rgba(82, 246, 255, 0.2),
+    0 0 25px rgba(82, 246, 255, 0.4);
+
+  animation:
+    nrShieldRotate 2s linear infinite;
+}
+
+.nr-world.power-energy {
+  animation:
+    nrEnergyPulse 0.7s ease-in-out infinite alternate;
+}
+
+.nr-world.power-slow .nr-track::before {
+  animation-duration: 2.2s;
+}
+
+.nr-world.power-magnet .nr-coin {
+  animation:
+    nrCoinSpin 0.25s linear infinite,
+    nrCoinFloat 0.35s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.neon-rush button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.4;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes nrStars {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(80px);
+  }
+}
+
+@keyframes nrRoadMove {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(45px);
+  }
+}
+
+@keyframes nrCoinSpin {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      rotateY(0deg);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      rotateY(90deg);
+  }
+
+  100% {
+    transform:
+      translate(-50%, -50%)
+      rotateY(180deg);
+  }
+}
+
+@keyframes nrCoinFloat {
+  from {
+    margin-top: -2px;
+  }
+
+  to {
+    margin-top: 4px;
+  }
+}
+
+@keyframes nrCoinPulse {
+  from {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes nrLaserPulse {
+  from {
+    opacity: 0.65;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nrDrone {
+  from {
+    transform:
+      translate(-50%, -50%)
+      translateY(-4px);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      translateY(4px);
+  }
+}
+
+@keyframes nrPowerFloat {
+  from {
+    transform:
+      translate(-50%, -50%)
+      translateY(-4px);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      translateY(5px);
+  }
+}
+
+@keyframes nrRunLeg {
+  from {
+    transform: rotate(18deg);
+  }
+
+  to {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes nrMessage {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scale(0.7)
+      translateY(12px);
+  }
+
+  20% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1.08)
+      translateY(0);
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scale(1)
+      translateY(-8px);
+  }
+}
+
+@keyframes nrCardIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes nrBestPulse {
+  from {
+    transform: scale(1);
+
+    text-shadow:
+      0 0 5px rgba(255, 216, 74, 0.2);
+  }
+
+  to {
+    transform: scale(1.04);
+
+    text-shadow:
+      0 0 20px rgba(255, 216, 74, 0.7);
+  }
+}
+
+@keyframes nrShieldRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nrEnergyPulse {
+  from {
+    filter: brightness(1);
+  }
+
+  to {
+    filter: brightness(1.13);
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .neon-rush {
+    padding: 10px;
+  }
+
+  .nr-hud {
+    grid-template-columns:
+      repeat(4, 1fr);
+  }
+
+  .nr-riskCard {
+    grid-column: 1 / -1;
+  }
+
+  .nr-bottomHud {
+    grid-template-columns:
+      130px
+      1fr
+      200px;
+  }
+
+  .nr-world {
+    height: 650px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .neon-rush {
+    padding: 7px;
+  }
+
+  .nr-header {
+    min-height: 59px;
+
+    padding: 9px;
+
+    border-radius: 17px;
+  }
+
+  .nr-brandIcon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    font-size: 19px;
+  }
+
+  .nr-brand strong {
+    font-size: 13px;
+
+    letter-spacing: 1.2px;
+  }
+
+  .nr-brand small {
+    font-size: 6px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .nr-headerStats {
+    gap: 5px;
+  }
+
+  .nr-headerStats > div {
+    min-width: 55px;
+
+    padding: 6px 7px;
+  }
+
+  .nr-headerStats span {
+    font-size: 6px;
+  }
+
+  .nr-headerStats strong {
+    font-size: 10px;
+  }
+
+  .nr-sound,
+  .nr-pause {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+  }
+
+  /* HUD */
+
+  .nr-hud {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 6px;
+  }
+
+  .nr-statCard {
+    min-height: 55px;
+
+    padding: 9px 10px;
+
+    border-radius: 12px;
+  }
+
+  .nr-statCard strong {
+    font-size: 15px;
+  }
+
+  .nr-riskCard {
+    grid-column: 1 / -1;
+
+    min-height: 58px;
+
+    padding: 9px 10px;
+
+    border-radius: 12px;
+  }
+
+  .nr-riskBar {
+    height: 6px;
+
+    margin-top: 8px;
+  }
+
+  /* WORLD */
+
+  .nr-world {
+    height: calc(100vh - 265px);
+
+    min-height: 500px;
+    max-height: 700px;
+
+    border-radius: 19px;
+  }
+
+  .nr-track {
+    width: 91%;
+  }
+
+  .nr-moon {
+    width: 58px;
+    height: 58px;
+
+    font-size: 57px;
+  }
+
+  .nr-city {
+    letter-spacing: 7px;
+  }
+
+  .cityBack {
+    font-size: 48px;
+  }
+
+  .cityFront {
+    font-size: 65px;
+  }
+
+  /* OBJECTS */
+
+  .nr-obstacle {
+    width: 62px;
+    height: 45px;
+  }
+
+  .nr-coin {
+    width: 29px;
+    height: 29px;
+
+    font-size: 24px;
+  }
+
+  .nr-powerup {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 13px;
+  }
+
+  /* PLAYER */
+
+  .nr-player {
+    width: 50px;
+    height: 87px;
+  }
+
+  /* MESSAGE */
+
+  .nr-message {
+    top: 23%;
+
+    width: 90%;
+  }
+
+  /* ROAD */
+
+  .nr-roadText {
+    left: 11px;
+    bottom: 11px;
+  }
+
+  .nr-roadText span {
+    font-size: 6px;
+  }
+
+  .nr-roadText strong {
+    font-size: 10px;
+  }
+
+  /* POWER */
+
+  .nr-activePower {
+    top: 9px;
+    right: 9px;
+
+    padding: 7px 9px;
+  }
+
+  /* START */
+
+  .nr-startCard,
+  .nr-resultCard {
+    width: 94%;
+
+    padding: 23px 18px;
+
+    border-radius: 21px;
+  }
+
+  .nr-startIcon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 16px;
+
+    font-size: 25px;
+  }
+
+  .nr-startCard h1 {
+    font-size: 35px;
+  }
+
+  .nr-startCard p {
+    font-size: 11px;
+  }
+
+  .nr-startHelp {
+    gap: 13px;
+  }
+
+  .nr-startHelp span {
+    font-size: 11px;
+  }
+
+  /* RESULT */
+
+  .nr-resultCard h1 {
+    font-size: 25px;
+  }
+
+  .nr-resultScore {
+    font-size: 52px;
+  }
+
+  .nr-resultStats {
+    gap: 5px;
+  }
+
+  .nr-resultStats > div {
+    padding: 9px 6px;
+  }
+
+  .nr-resultStats strong {
+    font-size: 12px;
+  }
+
+  .nr-resultButtons {
+    grid-template-columns: 1fr;
+  }
+
+  /* BOTTOM */
+
+  .nr-bottomHud {
+    grid-template-columns: 1fr;
+
+    gap: 6px;
+  }
+
+  .nr-tip {
+    display: none;
+  }
+
+  .nr-combo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 54px;
+
+    padding: 8px 12px;
+  }
+
+  .nr-combo > span {
+    margin-right: auto;
+  }
+
+  .nr-combo strong,
+  .nr-combo small {
+    margin: 0;
+  }
+
+  /* CONTROLS */
+
+  .nr-controls {
+    min-height: 70px;
+
+    padding: 7px;
+
+    border-radius: 15px;
+  }
+
+  .nr-controls button {
+    width: 30%;
+    height: 57px;
+
+    font-size: 25px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .nr-headerStats > div {
+    display: none;
+  }
+
+  .nr-world {
+    min-height: 495px;
+  }
+
+  .nr-startCard h1 {
+    font-size: 31px;
+  }
+
+  .nr-startHelp {
+    gap: 9px;
+  }
+
+  .nr-controls button {
+    height: 53px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-rush *,
+  .neon-rush *::before,
+  .neon-rush *::after {
+    animation-duration: 0.001ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.001ms !important;
+  }
+}

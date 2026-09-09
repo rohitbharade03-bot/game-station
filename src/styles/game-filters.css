@@ -1,0 +1,35 @@
+.game-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.game-filters::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-btn {
+  flex-shrink: 0;
+  padding: 9px 17px;
+  border: 1px solid #263247;
+  border-radius: 20px;
+  background: #0d1422;
+  color: #8d99ad;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filter-btn:hover {
+  color: white;
+  border-color: #6d3df5;
+}
+
+.filter-btn.active {
+  background: #7c4dff;
+  border-color: #7c4dff;
+  color: white;
+}

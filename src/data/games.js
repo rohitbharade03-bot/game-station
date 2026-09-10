@@ -5,7 +5,7 @@ const games = [
     category: "Action",
     players: "10 Players",
     rating: 4.8,
-    image: "/assets/games/game-hub.png",
+    image: "/game-station/assets/games/game-hub.png",
   },
 
   {
@@ -14,7 +14,7 @@ const games = [
     category: "Racing",
     players: "8 Players",
     rating: 4.7,
-    image: "/assets/games/indian-street-racing.png",
+    image: "/game-station/assets/games/indian-street-racing.png",
   },
 
   {
@@ -23,7 +23,7 @@ const games = [
     category: "Sports",
     players: "4 Players",
     rating: 4.7,
-    image: "/assets/games/street-football.png",
+    image: "/game-station/assets/games/street-football.png",
   },
 
   {
@@ -32,7 +32,7 @@ const games = [
     category: "Sports",
     players: "2 Players",
     rating: 4.6,
-    image: "/assets/games/cricket-battle.png",
+    image: "/game-station/assets/games/cricket-battle.png",
   },
 
   {
@@ -41,7 +41,7 @@ const games = [
     category: "Survival",
     players: "4 Players",
     rating: 4.8,
-    image: "/assets/games/find-the-odd-one.png",
+    image: "/game-station/assets/games/find-the-odd-one.png",
   },
 
   {
@@ -60,7 +60,7 @@ const games = [
     category: "Adventure",
     players: "5 Players",
     rating: 4.7,
-    image: "/assets/games/blockshift.png"  },
+    image: "/game-station/assets/games/blockshift.png"  },
 
   {
     id: 8,
@@ -68,7 +68,7 @@ const games = [
     category: "Survival",
     players: "6 Players",
     rating: 4.5,
-    image: "/assets/games/neon-rush.png"
+    image: "/game-station/assets/games/neon-rush.png"
   },
 
   {
@@ -77,7 +77,7 @@ const games = [
     category: "Mystery",
     players: "6 Players",
     rating: 4.7,
-    image: "/assets/games/shadow-grid.png"
+    image: "/game-station/assets/games/shadow-grid.png"
   },
 
   {
@@ -86,13 +86,13 @@ const games = [
     category: "Simulation",
     players: "Single Player",
     rating: 4.6,
-    image: "/assets/games/last-signal.png"  },
+    image: "/game-station/assets/games/last-signal.png"  },
 
   {
   id: 11,
   title: "ArrowVerse",
   slug: "arrowverse",
-  image: "/assets/games/arrowverse.png",
+  image: "/game-station/assets/games/arrowverse.png",
   category: "Puzzle",
   genre: "Reflex Puzzle",
   description:
@@ -110,7 +110,7 @@ const games = [
     category: "Adventure",
     players: "1 Player",
     rating: 4.8,
-    image: "/assets/games/echo-weaver.png",
+    image: "/game-station/assets/games/echo-weaver.png",
   },
 
   {
@@ -119,7 +119,7 @@ const games = [
   name: "Quick Duel",
   category: "Action",
   description: "Human vs AI — fast 30-second battles.",
-  image: "/assets/games/quick-duel.png",
+  image: "/game-station/assets/games/quick-duel.png",
   rating: 4.8,
   players: "New",
 },
@@ -130,7 +130,7 @@ const games = [
   category: "Puzzle",
   players: "1-2 Players",
   rating: 4.9,
-  image: "/assets/games/tic-tac-toe.png",
+  image: "/game-station/assets/games/tic-tac-toe.png",
 },
 
   {
@@ -139,7 +139,7 @@ const games = [
     category: "Arcade",
     players: "4 Players",
     rating: 4.5,
-    image: "/assets/games/skill-arena.png",
+    image: "/game-station/assets/games/skill-arena.png",
   },
 
   {
@@ -148,7 +148,7 @@ const games = [
     category: "Racing",
     players: "8 Players",
     rating: 4.6,
-    image: "/assets/games/car-crash.png",
+    image: "/game-station/assets/games/car-crash.png",
   },
 
   {
@@ -157,7 +157,7 @@ const games = [
     category: "Action",
     players: "4 Players",
     rating: 4.7,
-    image: "/assets/games/stealth-heist.png",
+    image: "/game-station/assets/games/stealth-heist.png",
   },
 
   {
@@ -166,7 +166,7 @@ const games = [
     category: "Strategy",
     players: "4 Players",
     rating: 4.6,
-    image: "/assets/games/kingdom-strategy.png",
+    image: "/game-station/assets/games/kingdom-strategy.png",
   },
 
   {
@@ -175,7 +175,7 @@ const games = [
     category: "Family",
     players: "4 Players",
     rating: 4.9,
-    image: "/assets/games/family-party.png",
+    image: "/game-station/assets/games/family-party.png",
   },
 
   {
@@ -184,7 +184,7 @@ const games = [
     category: "Open World",
     players: "8 Players",
     rating: 4.8,
-    image: "/assets/games/open-city.png",
+    image: "/game-station/assets/games/open-city.png",
   },
 ];
 

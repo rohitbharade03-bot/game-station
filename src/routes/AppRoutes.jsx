@@ -29,7 +29,7 @@ import TicTacToe from "../games/TicTacToe/TicTacToe";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/game-station">
 
       <Routes>
 

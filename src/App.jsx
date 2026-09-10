@@ -53,7 +53,7 @@ function App() {
   const featuredGames = games.slice(0, 4);
 
   const openGame = (id) => {
-  window.location.href = `/game-station/game/${id}`;
+  window.location.href = `#/game/${id}`;
   };
 
   return (

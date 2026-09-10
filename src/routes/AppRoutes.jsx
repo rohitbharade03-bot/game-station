@@ -175,9 +175,7 @@ function AppRoutes() {
        />
 
       </Routes>
-
     </HashRouter>
   );
 }
-
 export default AppRoutes;

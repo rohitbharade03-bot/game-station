@@ -1,5 +1,5 @@
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -29,7 +29,7 @@ import TicTacToe from "../games/TicTacToe/TicTacToe";
 
 function AppRoutes() {
   return (
-    <BrowserRouter basename="/game-station">
+    <HashRouter>
 
       <Routes>
 
@@ -176,7 +176,7 @@ function AppRoutes() {
 
       </Routes>
 
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

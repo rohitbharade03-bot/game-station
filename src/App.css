@@ -1184,3 +1184,40 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ================================
+   MOBILE GAME CARD FIX
+================================ */
+
+@media (max-width: 600px) {
+  .game-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .game-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .game-card-image,
+  .game-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-card img {
+    height: 155px;
+  }
+
+  .game-card-image,
+  .game-image {
+    height: 155px;
+  }
+}

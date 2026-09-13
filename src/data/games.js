@@ -133,14 +133,14 @@ const games = [
   image: "/game-station/assets/games/tic-tac-toe.png",
 },
 
-  {
-    id: 15,
-    title: "Skill Arena",
-    category: "Arcade",
-    players: "4 Players",
-    rating: 4.5,
-    image: "/game-station/assets/games/skill-arena.png",
-  },
+{
+  id: 15,
+  title: "Memory Match AI",
+  category: "Puzzle",
+  players: "1 Player",
+  rating: 4.9,
+image: "/game-station/assets/games/memory-match-ai.png",  description: "Match the pairs, build combos and train your memory.",
+},
 
   {
     id: 16,

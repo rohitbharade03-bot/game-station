@@ -25,7 +25,7 @@ import ArrowVerse from "../games/ArrowVerse/ArrowVerse";
 import EchoWeaver from "../games/Echoweaver/EchoWeaver";
 import QuickDuel from "../games/QuickDuel/QuickDuel";
 import TicTacToe from "../games/TicTacToe/TicTacToe";
-
+import MemoryMatchAI from "../games/MemoryMatchAI/MemoryMatchAI";
 
 function AppRoutes() {
   return (
@@ -174,6 +174,10 @@ function AppRoutes() {
        element={<TicTacToe />} 
        />
 
+      <Route
+        path="/game/15/play"
+        element={<MemoryMatchAI />}
+      /> 
       </Routes>
     </HashRouter>
   );

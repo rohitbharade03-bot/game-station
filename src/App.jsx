@@ -196,8 +196,7 @@ function App() {
             <h2>
               Your Game.
               <br />
-              <span>Your Arena.</span>
-            </h2>
+              <span>Your Arena.</span>            </h2>
 
             <p>
               Discover exciting games, challenge your skills,

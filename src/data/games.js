@@ -142,23 +142,25 @@ const games = [
 image: "/game-station/assets/games/memory-match-ai.png",  description: "Match the pairs, build combos and train your memory.",
 },
 
-  {
-    id: 16,
-    title: "Car Crash Challenge",
-    category: "Racing",
-    players: "8 Players",
-    rating: 4.6,
-    image: "/game-station/assets/games/car-crash.png",
-  },
+{
+  id: 16,
+  title: "Coffee Catcher",
+  category: "Arcade",
+  players: "1 Player",
+  rating: 4.8,
+  image: "/game-station/assets/games/coffee-catcher.png",
+  description: "Catch the coffee, avoid the tea and reach 50 points!"
+},
 
-  {
-    id: 17,
-    title: "Stealth Heist",
-    category: "Action",
-    players: "4 Players",
-    rating: 4.7,
-    image: "/game-station/assets/games/stealth-heist.png",
-  },
+{
+  id: 17,
+  title: "TRUST?",
+  category: "Puzzle",
+  players: "1 Player",
+  rating: 4.9,
+  image: "/game-station/assets/games/trust.png",
+  description: "Think before you click. Can you trust the instructions?"
+},
 
   {
     id: 18,

@@ -1,0 +1,680 @@
+* {
+  box-sizing: border-box;
+}
+
+.coffee-game-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 166, 0, 0.14), transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(255, 80, 20, 0.12), transparent 35%),
+    #08090d;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.coffee-game-shell {
+  width: min(100%, 820px);
+  min-height: 650px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: rgba(15, 17, 23, 0.94);
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.55),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* MENU */
+
+.coffee-menu {
+  min-height: 650px;
+  padding: 55px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.coffee-logo {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 30px;
+  font-size: 55px;
+  background: linear-gradient(145deg, #302016, #17100c);
+  border: 1px solid rgba(255, 176, 82, 0.25);
+  box-shadow: 0 0 50px rgba(255, 143, 50, 0.12);
+  margin-bottom: 25px;
+}
+
+.coffee-kicker {
+  margin: 0 0 10px;
+  color: #ffad52;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.coffee-menu h1,
+.coffee-result h1 {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 62px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.coffee-description {
+  max-width: 540px;
+  margin: 20px auto 0;
+  color: #a7aab4;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.coffee-description strong {
+  color: #fff;
+}
+
+.coffee-preview {
+  position: relative;
+  width: min(100%, 470px);
+  height: 145px;
+  margin: 35px auto;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 169, 71, 0.08), transparent),
+    #0b0d12;
+}
+
+.coffee-preview::before,
+.coffee-preview::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.coffee-preview::before {
+  top: -80px;
+  left: 10%;
+  background: rgba(255, 160, 50, 0.15);
+}
+
+.coffee-preview::after {
+  bottom: -100px;
+  right: 10%;
+  background: rgba(255, 70, 20, 0.12);
+}
+
+.preview-drop,
+.preview-bad,
+.preview-player {
+  position: absolute;
+  z-index: 2;
+  font-size: 40px;
+}
+
+.preview-drop {
+  left: 22%;
+  top: 20px;
+  animation: previewFall 2.4s infinite ease-in;
+}
+
+.preview-bad {
+  right: 24%;
+  top: 60px;
+  animation: previewFall 2.9s infinite ease-in;
+}
+
+.preview-player {
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 52px;
+}
+
+@keyframes previewFall {
+  0% {
+    transform: translateY(-25px);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(80px);
+    opacity: 1;
+  }
+}
+
+.coffee-rules {
+  width: min(100%, 620px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.coffee-rules > div {
+  padding: 14px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.coffee-rules span {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.coffee-rules strong {
+  display: block;
+  font-size: 14px;
+}
+
+.coffee-rules small {
+  color: #777b87;
+  font-size: 10px;
+}
+
+.coffee-start-btn {
+  border: 0;
+  padding: 15px 28px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #1b1006;
+  font-weight: 900;
+  font-size: 15px;
+  background: linear-gradient(135deg, #ffc36a, #ff9138);
+  box-shadow: 0 10px 35px rgba(255, 145, 56, 0.22);
+  transition: 0.2s ease;
+}
+
+.coffee-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(255, 145, 56, 0.32);
+}
+
+.coffee-best {
+  margin-top: 18px;
+  color: #777b87;
+  font-size: 12px;
+}
+
+.coffee-best strong {
+  color: #ffb55d;
+}
+
+/* PLAYING */
+
+.coffee-playing {
+  padding: 22px;
+}
+
+.coffee-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.coffee-header > div:nth-child(2) {
+  flex: 1;
+}
+
+.coffee-header span {
+  display: block;
+  color: #747884;
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  font-weight: 800;
+}
+
+.coffee-header strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 17px;
+}
+
+.coffee-back-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.coffee-target {
+  padding: 9px 13px;
+  border-radius: 10px;
+  background: rgba(255, 171, 76, 0.09);
+  color: #ffb45e;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.coffee-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.coffee-stat {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.coffee-stat > span {
+  font-size: 21px;
+}
+
+.coffee-stat small {
+  display: block;
+  color: #696d78;
+  font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.coffee-stat strong {
+  font-size: 15px;
+}
+
+.coffee-progress {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  background: #1b1d24;
+}
+
+.coffee-progress > div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff8e35, #ffc46c);
+  transition: width 0.2s ease;
+}
+
+.coffee-board {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 520px;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  touch-action: none;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 158, 62, 0.07), transparent 35%),
+    linear-gradient(180deg, #10131a 0%, #090b10 100%);
+}
+
+.coffee-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+.coffee-board-glow {
+  position: absolute;
+  top: -130px;
+  left: 50%;
+  width: 350px;
+  height: 350px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(255, 145, 45, 0.08);
+  filter: blur(60px);
+}
+
+.falling-item {
+  position: absolute;
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  font-size: 34px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.good-item {
+  filter: drop-shadow(0 5px 12px rgba(255, 150, 50, 0.25));
+}
+
+.bad-item {
+  filter: drop-shadow(0 5px 12px rgba(130, 190, 255, 0.18));
+}
+
+.coffee-player {
+  position: absolute;
+  z-index: 10;
+  bottom: 55px;
+  width: 100px;
+  height: 80px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.player-cup {
+  font-size: 52px;
+  line-height: 1;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.5));
+}
+
+.player-shadow {
+  position: absolute;
+  bottom: -5px;
+  width: 70px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(4px);
+}
+
+.coffee-ground {
+  position: absolute;
+  z-index: 7;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background: linear-gradient(180deg, transparent, rgba(255, 151, 52, 0.05));
+  border-top: 1px solid rgba(255, 171, 76, 0.08);
+}
+
+.coffee-message {
+  position: absolute;
+  z-index: 15;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  padding: 7px 12px;
+  border-radius: 10px;
+  color: #b9bcc5;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.mobile-controls {
+  display: none;
+}
+
+.keyboard-hint {
+  text-align: center;
+  color: #686c77;
+  font-size: 11px;
+  margin: 12px 0 0;
+}
+
+.keyboard-hint strong {
+  color: #aeb2bc;
+}
+
+/* RESULT */
+
+.coffee-result {
+  min-height: 650px;
+  padding: 60px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.result-icon {
+  width: 105px;
+  height: 105px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 25px;
+  border-radius: 30px;
+  font-size: 55px;
+  background: rgba(255, 163, 67, 0.08);
+  border: 1px solid rgba(255, 163, 67, 0.16);
+}
+
+.result-message {
+  max-width: 480px;
+  color: #999da8;
+  line-height: 1.6;
+}
+
+.result-score-card {
+  width: min(100%, 380px);
+  margin: 25px 0;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.result-score-card > span {
+  display: block;
+  color: #747883;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.result-score-card > strong {
+  display: block;
+  margin: 5px 0 20px;
+  color: #ffb45d;
+  font-size: 55px;
+}
+
+.result-score-card > div {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+}
+
+.result-score-card > div span {
+  color: #666a75;
+  font-size: 9px;
+}
+
+.result-score-card b {
+  font-size: 14px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.coffee-secondary-btn {
+  padding: 14px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #d5d7dc;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .coffee-game-page {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .coffee-game-shell {
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .coffee-menu,
+  .coffee-result {
+    min-height: 100vh;
+    padding: 45px 18px;
+  }
+
+  .coffee-logo {
+    width: 80px;
+    height: 80px;
+    font-size: 43px;
+    border-radius: 24px;
+  }
+
+  .coffee-menu h1,
+  .coffee-result h1 {
+    font-size: 42px;
+  }
+
+  .coffee-rules {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .coffee-playing {
+    padding: 12px;
+  }
+
+  .coffee-header {
+    gap: 10px;
+  }
+
+  .coffee-stats {
+    gap: 6px;
+  }
+
+  .coffee-stat {
+    padding: 8px;
+  }
+
+  .coffee-stat > span {
+    font-size: 18px;
+  }
+
+  .coffee-stat small {
+    font-size: 7px;
+  }
+
+  .coffee-stat strong {
+    font-size: 13px;
+  }
+
+  .coffee-board {
+    height: calc(100vh - 235px);
+    min-height: 430px;
+    max-height: 620px;
+    border-radius: 16px;
+  }
+
+  .coffee-player {
+    bottom: 42px;
+  }
+
+  .coffee-message {
+    font-size: 10px;
+  }
+
+  .keyboard-hint {
+    display: none;
+  }
+
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .mobile-controls button {
+    width: 58px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .mobile-controls span {
+    color: #686c77;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .coffee-menu h1,
+  .coffee-result h1 {
+    font-size: 36px;
+  }
+
+  .coffee-description {
+    font-size: 14px;
+  }
+
+  .coffee-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .coffee-stat {
+    justify-content: center;
+  }
+
+  .coffee-stat > span {
+    display: none;
+  }
+
+  .coffee-board {
+    min-height: 400px;
+    height: calc(100vh - 220px);
+  }
+
+  .falling-item {
+    font-size: 29px;
+  }
+
+  .player-cup {
+    font-size: 45px;
+  }
+}

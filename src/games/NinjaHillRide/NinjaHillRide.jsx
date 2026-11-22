@@ -2548,18 +2548,51 @@ useEffect(() => {
     /*
      * Arrow keys / W / A / D
      */
-    if (
-      [
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowUp",
-        "a",
-        "d",
-        "w",
-      ].includes(event.key)
-    ) {
-      event.preventDefault();
-    }
+/*
+ * KEYBOARD CONTROLS
+ */
+if (
+  [
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowUp",
+    "ArrowDown",
+    "a",
+    "d",
+    "w",
+    "s",
+  ].includes(event.key)
+) {
+  event.preventDefault();
+}
+
+if (
+  event.key === "ArrowLeft" ||
+  key === "a"
+) {
+  keysRef.current.left = true;
+}
+
+if (
+  event.key === "ArrowRight" ||
+  key === "d"
+) {
+  keysRef.current.right = true;
+}
+
+if (
+  event.key === "ArrowUp" ||
+  key === "w"
+) {
+  keysRef.current.up = true;
+}
+
+if (
+  event.key === "ArrowDown" ||
+  key === "s"
+) {
+  keysRef.current.down = true;
+}
 
     /*
      * PAUSE
@@ -2590,15 +2623,41 @@ useEffect(() => {
 }
   };
 
-  const handleKeyUp = (event) => {
-    const key = event.key.toLowerCase();
+const handleKeyUp = (event) => {
+  const key = event.key.toLowerCase();
 
-    if (event.code === "Space") {
-      keysRef.current[" "] = false;
-    } else {
-      keysRef.current[key] = false;
-    }
-  };
+  if (
+    event.key === "ArrowLeft" ||
+    key === "a"
+  ) {
+    keysRef.current.left = false;
+  }
+
+  if (
+    event.key === "ArrowRight" ||
+    key === "d"
+  ) {
+    keysRef.current.right = false;
+  }
+
+  if (
+    event.key === "ArrowUp" ||
+    key === "w"
+  ) {
+    keysRef.current.up = false;
+  }
+
+  if (
+    event.key === "ArrowDown" ||
+    key === "s"
+  ) {
+    keysRef.current.down = false;
+  }
+
+  if (event.code === "Space") {
+    keysRef.current[" "] = false;
+  }
+};
 
   window.addEventListener(
     "keydown",

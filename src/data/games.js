@@ -171,14 +171,15 @@ image: "/game-station/assets/games/memory-match-ai.png",  description: "Match th
     image: "/game-station/assets/games/kingdom-strategy.png",
   },
 
-  {
-    id: 19,
-    title: "Family Party",
-    category: "Family",
-    players: "4 Players",
-    rating: 4.9,
-    image: "/game-station/assets/games/family-party.png",
-  },
+{
+  id: 19,
+  title: "ONE MORE RUN",
+  category: "Adventure",
+  players: "1 Player",
+  rating: 4.9,
+  image: "/game-station/assets/games/one-more-run.png",
+  description: "Run. Risk. Discover. Upgrade. Repeat."
+},
 
   {
     id: 20,

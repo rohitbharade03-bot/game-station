@@ -33,6 +33,7 @@ import MemoryMatchAI from "../games/MemoryMatchAI/MemoryMatchAI";
 import CoffeeCatcher from "../games/CoffeeCatcher/CoffeeCatcher";
 import TrustGame from "../games/TrustGame/TrustGame";
 import CityRush from "../games/CityRush/CityRush";
+import OneMoreRun from "../games/OneMoreRun/OneMoreRun";
 // =====================================================
 // PROTECTED ROUTE CityRush
 // =====================================================
@@ -388,6 +389,19 @@ function AppRoutes() {
           element={<CityRush />}
          />
 
+        {/* =================================================
+    GAME #19
+    ONE MORE RUN
+================================================= */}
+
+<Route
+  path="/game/19/play"
+  element={
+    <ProtectedRoute>
+      <OneMoreRun />
+    </ProtectedRoute>
+  }
+/>
         {/* =================================================
             UNKNOWN ROUTE
         ================================================== */}
